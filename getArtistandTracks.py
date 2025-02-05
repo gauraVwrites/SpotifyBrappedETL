@@ -14,8 +14,8 @@ import psycopg2
 #----------------------------------------------------------LOADING CREDENTIALS--------------------------------------------------------------------
 
 # this is the new client id and client secret, in this script we'll not use O-Auth for API calls, instead we'll follow Client Credentials Flow
-client_id = os.environ('CC_CLIENT_ID')
-client_secret = os.environ('CC_CLIENT_SECRET')
+client_id = os.environ['CC_CLIENT_ID']
+client_secret = os.environ['CC_CLIENT_SECRET']
 
 #-------------------------------------------------------GENERATING TOKEN----------------------------------------------------------------------
 
@@ -62,7 +62,7 @@ def getArtist(token, artistId):
     return response
 
 #------------------------------------------------DEFINING CONNECTION WITH POSTGRES DATABASE (ORM)--------------------------------------------------
-aivenURL = os.environ('AIVEN_URL')
+aivenURL = os.environ['AIVEN_URL']
 # Creating Engine
 db_engine = create_engine(aivenURL, echo= True) #this takes care of sql conversion of python commands
 
