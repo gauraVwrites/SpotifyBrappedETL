@@ -10,9 +10,9 @@ import psycopg2
 
 #------------------------------------------------------------LOADING CREDENTIALS--------------------------------------------------------------
 
-client_id = os.environ('CLIENT_ID')
-client_secret = os.environ('CLIENT_SECRET')
-refreshToken = os.environ('REFRESH_TOKEN')
+client_id = os.environ['CLIENT_ID']
+client_secret = os.environ['CLIENT_SECRET']
+refreshToken = os.environ['REFRESH_TOKEN']
 
 #------------------------------------------------------------READING JSON TO GET TOKENS------------------------------------------------------
 # def load_tokens():
@@ -131,7 +131,7 @@ def processTime(timestamp_str):
 # because time will always increase, we'll feed only that specific data that will be after the last feeded data
 
 # ----------------------------------------------------------SETTING UP DATABASE (ORM)----------------------------------------------------------------------
-aivenURL = os.environ('AIVEN_URL')
+aivenURL = os.environ['AIVEN_URL']
 
 # CREATING ENGINE FOR CONNECTION USING DATABASE URL
 aivenEngine = create_engine(aivenURL, echo= True)
