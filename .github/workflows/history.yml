@@ -1,0 +1,30 @@
+name: FETCH AND POPULATE STREAMING RELATED DATA EACH HOUR
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # This will run the workflow every hour, on the hour
+  workflow_dispatch:  # This allows manual execution
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Python script
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+          AIVEN_URL: ${{ secrets.AIVEN_URL }}
+          
+        run: python getLast50.py
