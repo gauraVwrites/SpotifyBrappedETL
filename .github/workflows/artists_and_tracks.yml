@@ -1,0 +1,29 @@
+name: FETCH AND POPULATE ARTISTS AND TRACKS RELATED DATA EVERY 3 HOUR
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'   # This will run the workflow at start of every 3 hour
+  workflow_dispatch:  # This allows manual execution
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Python script
+        env:
+          CC_CLIENT_ID: ${{ secrets.CC_CLIENT_ID }}
+          CC_CLIENT_SECRET: ${{ secrets.CC_CLIENT_SECRET }}
+          AIVEN_URL: ${{ secrets.AIVEN_URL }}
+          
+        run: python getArtistandTracks.py
