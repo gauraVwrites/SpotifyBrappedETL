@@ -161,7 +161,8 @@ if len(artistId) > 0:
         artist_id.append(id)
         artist_name.append(artistStats['name'])
         artist_popularity.append(artistStats['popularity'])
-        genre.append(artistStats['genres'][0])
+        if artistStats['genres']:
+            genre.append(artistStats['genres'][0])
         img_link.append(artistStats['images'][0]['url'])
     data  = {
         'artist_id':artist_id,
