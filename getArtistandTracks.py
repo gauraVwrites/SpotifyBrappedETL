@@ -163,6 +163,8 @@ if len(artistId) > 0:
         artist_popularity.append(artistStats['popularity'])
         if artistStats['genres']:
             genre.append(artistStats['genres'][0])
+        else:
+            genre.append("NaN")
         img_link.append(artistStats['images'][0]['url'])
     data  = {
         'artist_id':artist_id,
