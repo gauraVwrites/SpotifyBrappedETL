@@ -1,6 +1,5 @@
 # SpotifyBrappedETL
-## getLast50.py Runs every hour<br>
-## getArtistandTracks.py Runs every 3 hour<br>
+## Spotify Wrapped But Better
 #
 **Purpose**
 - Create dynamic insights for free using my ETL skills, which in Spotify otherwise requires a Premium subscription.
