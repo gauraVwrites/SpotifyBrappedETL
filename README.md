@@ -38,6 +38,33 @@ Tasks that were done before starting the automated ETL pipeline:
 - In the same way wrote a script that queries both Fact and Dimension Tables and takes decision of populating Dimension Tables on the basis of result of queries.
 #
 1. *Understanding the API*<br>
-In my last Spotify project Brapped, I've mentioned in one of my articles about two ways of interacting with Spotify's Web API. Client Credentials Flow | O - Authorization or Authorization Code Flow. <br>
+#
+In my last Spotify project Brapped, I've mentioned in one of my articles about two ways of interacting with Spotify's Web API. Client Cred<entials Flow | O - Authorization or Authorization Code Flow. <br>
 Last time I used Client Credentials Flow. Since this time I need to work with data related to my Spotify Account I need to work with Authorization Code Flow. Authoriztion Code Flow requires user permission in order to make API calls that involve data related to user. It starts with generating an Authorization Code, to get Authorization Code we need to grant access from our Spotify Account, this gives us an one time Authorization Code, that helps us generate an Access Token which works exactly for 1 hour. Now in order to automate the whole flow, I'll use Refresh Token. A Refresh Token allows us to generate new Access Tokens, as many times as user wants.<br>
-After sorting out my Access Token, I'll use 3 endpoints that will help me fetch the required data.
+After sorting out my Access Token, I'll use 3 endpoints that will help me fetch the required data.<br>
+This endpoint will be used in order to fetch data related to last played tracks https://api.spotify.com/v1/me/player/recently-played.<br>
+These endpoints will be used to fetch data related to dimensions https://api.spotify.com/v1/tracks/{id} | https://api.spotify.com/v1/artists/{id}<br>
+2. *Setting up the Cloud Environment*<br>
+#
+![]()
+#
+3. *Creating Tables*<br>
+#
+I've setup a 3 table database, mainStreamingData acts as a fact table, it records the information related to tracks played by user(me). Other two tables act as dimension table which store information about artists and tracks. These 3 tables get populated with the tracks I play from my spotify account.
+4. *Code Workflow*<br>
+#
+The code in ***getLast50.py*** starts with creating an access token using the existing refresh token, after that the token is created it quickly sends and get request to Spotify Web API, to fetch last played 50 tracks. After that all of the data is converted into a dataframe. This is followed with establishing a database connection with database using sqlalchemy and psycopg2, after that a query is sent to fact table to get the last entries timestamp which is then compared with the timestamp in dataframe and only the data that has a timestamp value more than the queried timestamp is populated back to fact table.<br>
+The code in ***artistandTracks.py*** used Client Credentials Flow, in order to make API calls, this starts with generating Access Token using Client Credentials. Followed up with establishing connection with database and then querying fact table and dimension table and populating dimension table on the basis of queried results.
+5. *Automation*<br>
+#
+For timely running my python scripts I've used GitHub Actions.<br>
+***getLast50.py*** runs every hour.<br>
+***artistAndTracks.py*** runs every 3 hours.<br>
+#
+**My Added Features and Functionalities**
+- Feature of daily report, shows my spotify report for current day.
+- User interaction to search for user and tracks and get information related to them.
+- Calculating duration ms on the way for each track.
+- Distincting the artist stats on the basis of Ft. and Main.
+
+
