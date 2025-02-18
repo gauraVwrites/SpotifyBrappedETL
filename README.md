@@ -44,6 +44,7 @@ Last time I used Client Credentials Flow. Since this time I need to work with da
 After sorting out my Access Token, I'll use 3 endpoints that will help me fetch the required data.<br>
 This endpoint will be used in order to fetch data related to last played tracks https://api.spotify.com/v1/me/player/recently-played.<br>
 These endpoints will be used to fetch data related to dimensions https://api.spotify.com/v1/tracks/{id} | https://api.spotify.com/v1/artists/{id}<br>
+#
 2. *Setting up the Cloud Environment*<br>
 #
 ![]()
@@ -51,10 +52,12 @@ These endpoints will be used to fetch data related to dimensions https://api.spo
 3. *Creating Tables*<br>
 #
 I've setup a 3 table database, mainStreamingData acts as a fact table, it records the information related to tracks played by user(me). Other two tables act as dimension table which store information about artists and tracks. These 3 tables get populated with the tracks I play from my spotify account.<br>
+#
 4. *Code Workflow*<br>
 #
 The code in ***getLast50.py*** starts with creating an access token using the existing refresh token, after that the token is created it quickly sends and get request to Spotify Web API, to fetch last played 50 tracks. After that all of the data is converted into a dataframe. This is followed with establishing a database connection with database using sqlalchemy and psycopg2, after that a query is sent to fact table to get the last entries timestamp which is then compared with the timestamp in dataframe and only the data that has a timestamp value more than the queried timestamp is populated back to fact table.<br>
 The code in ***artistandTracks.py*** used Client Credentials Flow, in order to make API calls, this starts with generating Access Token using Client Credentials. Followed up with establishing connection with database and then querying fact table and dimension table and populating dimension table on the basis of queried results.<br>
+#
 5. *Automation*<br>
 #
 For timely running my python scripts I've used GitHub Actions.<br>
