@@ -25,7 +25,7 @@
 #
 **Workflow**
 #
-![]()<br>
+![](https://github.com/gauraVwrites/SpotifyBrappedETL/blob/main/images/Screenshot%202025-02-18%20124533.png)<br>
 #
 Tasks that were done before starting the automated ETL pipeline:
 - Hosted a database on cloud.
