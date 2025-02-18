@@ -7,7 +7,7 @@
 #
 **Dataset**
 - Created my own database from scratch, database consists of 3 tables.
-- mainStreamingData|artistTable|trackTable
+- mainStreamingData | artistTable | trackTable
 - artistTable and trackTable act as Dimension Table while mainStreamingData acts as Fact Table.
 - mainStreamingData contains information related to last played tracks like trackname, artistname, ids, timestamp.
 #
@@ -50,11 +50,11 @@ These endpoints will be used to fetch data related to dimensions https://api.spo
 #
 3. *Creating Tables*<br>
 #
-I've setup a 3 table database, mainStreamingData acts as a fact table, it records the information related to tracks played by user(me). Other two tables act as dimension table which store information about artists and tracks. These 3 tables get populated with the tracks I play from my spotify account.
+I've setup a 3 table database, mainStreamingData acts as a fact table, it records the information related to tracks played by user(me). Other two tables act as dimension table which store information about artists and tracks. These 3 tables get populated with the tracks I play from my spotify account.<br>
 4. *Code Workflow*<br>
 #
 The code in ***getLast50.py*** starts with creating an access token using the existing refresh token, after that the token is created it quickly sends and get request to Spotify Web API, to fetch last played 50 tracks. After that all of the data is converted into a dataframe. This is followed with establishing a database connection with database using sqlalchemy and psycopg2, after that a query is sent to fact table to get the last entries timestamp which is then compared with the timestamp in dataframe and only the data that has a timestamp value more than the queried timestamp is populated back to fact table.<br>
-The code in ***artistandTracks.py*** used Client Credentials Flow, in order to make API calls, this starts with generating Access Token using Client Credentials. Followed up with establishing connection with database and then querying fact table and dimension table and populating dimension table on the basis of queried results.
+The code in ***artistandTracks.py*** used Client Credentials Flow, in order to make API calls, this starts with generating Access Token using Client Credentials. Followed up with establishing connection with database and then querying fact table and dimension table and populating dimension table on the basis of queried results.<br>
 5. *Automation*<br>
 #
 For timely running my python scripts I've used GitHub Actions.<br>
@@ -66,5 +66,19 @@ For timely running my python scripts I've used GitHub Actions.<br>
 - User interaction to search for user and tracks and get information related to them.
 - Calculating duration ms on the way for each track.
 - Distincting the artist stats on the basis of Ft. and Main.
+#
+**Challenges**<br>
+- Limited information for more accurate insights, like no data on duration of track played.
+- Normally Authorization Code Flow requires user to generate new Auth Code each time the code runs, making it hard to automate the whole process.
+- Migrating the database from Aiven cloud to NeonTech.
+- Making sure that only the fresh data is being populated into tables.
+#
+**Solutions**<br>
+- Calculated duration on the go for more accurate insights related to duration.
+- Carefully extracted and used Refresh Token and used it repeatedly to generate fresh Access Token, making the whole process automation friendly.
+- Refer to ***migrate.py*** to understand the whole data migration flow.
+- Populated data only after understanding the existing data in the tables by querying the database.
+#
+Thanks for sticking to this project, if you have any question related to this project, feel free to ask me. If you've any suggestion that will help me improve this project please let me know. Thanks again 😇
 
 
