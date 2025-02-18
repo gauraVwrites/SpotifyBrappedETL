@@ -47,8 +47,17 @@ These endpoints will be used to fetch data related to dimensions https://api.spo
 #
 2. *Setting up the Cloud Environment*<br>
 #
-![]()
+![](https://github.com/gauraVwrites/SpotifyBrappedETL/blob/main/images/Screenshot%202025-02-18%20125151.png)
 #
+![](https://github.com/gauraVwrites/SpotifyBrappedETL/blob/main/images/Screenshot%202025-02-18%20125302.png)
+#
+![](https://github.com/gauraVwrites/SpotifyBrappedETL/blob/main/images/Screenshot%202025-02-18%20125337.png)
+#
+![](https://github.com/gauraVwrites/SpotifyBrappedETL/blob/main/images/Screenshot%202025-02-18%20125659.png)
+#
+![](https://github.com/gauraVwrites/SpotifyBrappedETL/blob/main/images/Screenshot%202025-02-18%20125732.png)
+#
+![](https://github.com/gauraVwrites/SpotifyBrappedETL/blob/main/images/Screenshot%202025-02-18%20125939.png)
 3. *Creating Tables*<br>
 #
 I've setup a 3 table database, mainStreamingData acts as a fact table, it records the information related to tracks played by user(me). Other two tables act as dimension table which store information about artists and tracks. These 3 tables get populated with the tracks I play from my spotify account.<br>
