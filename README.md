@@ -78,6 +78,9 @@ For timely running my python scripts I've used GitHub Actions.<br>
 - User interaction to search for user and tracks and get information related to them.
 - Calculating duration ms on the way for each track.
 - Distincting the artist stats on the basis of Ft. and Main.
+- Scheduled refreshes on Power BI service for timely updated reports.
+#
+![](https://github.com/gauraVwrites/SpotifyBrappedETL/blob/main/images/Screenshot%202025-02-21%20135330.png)
 #
 **Challenges**<br>
 - Limited information for more accurate insights, like no data on duration of track played.
