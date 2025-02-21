@@ -81,6 +81,8 @@ For timely running my python scripts I've used GitHub Actions.<br>
 - Scheduled refreshes on Power BI service for timely updated reports.
 #
 ![](https://github.com/gauraVwrites/SpotifyBrappedETL/blob/main/images/Screenshot%202025-02-21%20135330.png)
+<br>
+- Made reports that are mobile friendly, in order to access my refreshed reports directly through my phone.
 #
 **Challenges**<br>
 - Limited information for more accurate insights, like no data on duration of track played.
