@@ -200,7 +200,6 @@ if len(trackId) > 0:
             albumName.append(trackStats['album']['name'])
         else:
             albumName.append('EP/SINGLE')
-        if 
         imageLink.append(trackStats['album']['images'][0]['url'])
         allArtists = ''
         if len(trackStats['artists']) > 1:
@@ -232,4 +231,5 @@ if len(trackId) > 0:
     sql_session_2.close()
 else:
     sql_session_2.close()
+
 
