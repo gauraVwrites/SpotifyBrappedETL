@@ -165,7 +165,7 @@ if len(artistId) > 0:
             genre.append(artistStats['genres'][0])
         else:
             genre.append("NaN")
-        if artistStats['images'][0]:
+        if len(artistStats['images']) > 0:
             img_link.append(artistStats['images'][0]['url'])
         else:
             img_link.append('')
@@ -231,6 +231,7 @@ if len(trackId) > 0:
     sql_session_2.close()
 else:
     sql_session_2.close()
+
 
 
 
