@@ -192,7 +192,10 @@ if len(trackId) > 0:
     for i in trackId:
         trackStats = getTracks(v, i)
         track_id.append(i)
-        track_name.append(trackStats['name'])
+        try:
+            track_name.append(trackStats['name'])
+        except IndexError:
+            track_name.append("")
         explicit.append(trackStats['explicit'])
         popularity.append(trackStats['popularity'])
 
@@ -231,6 +234,7 @@ if len(trackId) > 0:
     sql_session_2.close()
 else:
     sql_session_2.close()
+
 
 
 
