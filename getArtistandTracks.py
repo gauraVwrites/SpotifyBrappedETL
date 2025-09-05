@@ -5,7 +5,7 @@ import os
 import json
 from datetime import datetime
 import pytz
-from sqlalchemy import create_engine, Column, Integer, String,  Boolean
+from sqlalchemy import create_engine, Column, Integer, String,  Boolean, BigInteger
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker 
 import psycopg2
@@ -79,7 +79,7 @@ class trackTable(Base):
     trackID = Column('track_id', String)
     trackName = Column('track_name', String)
     explicit = Column('explicit', Boolean)
-    popularity = Column('popularity', Integer)
+    popularity = Column('popularity', Integer, nullable= True)
     albumName = Column('album_name', String)
     imageLink = Column('img_link', String)
     featureArtists = Column('ft_artists', String)
@@ -102,7 +102,7 @@ class artistTable(Base):
     __tablename__ = 'artist_table'
     artistId = Column('artist_id', String)
     artistName = Column('aritst_name', String)
-    aritstPopularity = Column('popularity', Integer)
+    aritstPopularity = Column('popularity', Integer, nullable= True)
     genre = Column('genre', String)
     imgLink = Column('img_link', String)
     rowNum = Column('rn', Integer, primary_key= True, autoincrement= True)
@@ -248,6 +248,7 @@ if len(trackId) > 0:
     sql_session_2.close()
 else:
     sql_session_2.close()
+
 
 
 
