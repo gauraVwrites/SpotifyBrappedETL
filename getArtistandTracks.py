@@ -194,7 +194,7 @@ if len(trackId) > 0:
         track_id.append(i)
         try:
             track_name.append(trackStats['name'])
-        except IndexError:
+        except KeyError:
             track_name.append("")
         explicit.append(trackStats['explicit'])
         popularity.append(trackStats['popularity'])
@@ -234,6 +234,7 @@ if len(trackId) > 0:
     sql_session_2.close()
 else:
     sql_session_2.close()
+
 
 
 
