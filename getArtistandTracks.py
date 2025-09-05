@@ -198,22 +198,22 @@ if len(trackId) > 0:
             track_name.append("")
         try:
             explicit.append(trackStats['explicit'])
-        except:
+        except KeyError:
             explicit.append("")
         try:
             popularity.append(trackStats['popularity'])
-        except:
+        except KeyError:
             popularity.append("")
         try:
             if trackStats['album']['total_tracks'] > 3:
                 albumName.append(trackStats['album']['name'])
             else:
                 albumName.append('EP/SINGLE')
-        except:
+        except (IndexError, KeyError):
             albumName.append("")
         try:
             imageLink.append(trackStats['album']['images'][0]['url'])
-        except:
+        except (IndexError, KeyError):
             imageLink.append("")
         allArtists = ''
         if len(trackStats['artists']) > 1:
@@ -245,6 +245,7 @@ if len(trackId) > 0:
     sql_session_2.close()
 else:
     sql_session_2.close()
+
 
 
 
