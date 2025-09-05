@@ -199,7 +199,7 @@ if len(trackId) > 0:
         try:
             explicit.append(trackStats['explicit'])
         except KeyError:
-            explicit.append("")
+            explicit.append(0)
         try:
             popularity.append(trackStats['popularity'])
         except KeyError:
@@ -248,6 +248,7 @@ if len(trackId) > 0:
     sql_session_2.close()
 else:
     sql_session_2.close()
+
 
 
 
