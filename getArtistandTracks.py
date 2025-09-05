@@ -203,7 +203,7 @@ if len(trackId) > 0:
         try:
             popularity.append(trackStats['popularity'])
         except KeyError:
-            popularity.append(None)
+            popularity.append(0)
         try:
             if trackStats['album']['total_tracks'] > 3:
                 albumName.append(trackStats['album']['name'])
@@ -248,6 +248,7 @@ if len(trackId) > 0:
     sql_session_2.close()
 else:
     sql_session_2.close()
+
 
 
 
