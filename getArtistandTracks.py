@@ -216,16 +216,19 @@ if len(trackId) > 0:
         except (IndexError, KeyError):
             imageLink.append("")
         allArtists = ''
-        if len(trackStats['artists']) > 1:
-            artists = trackStats['artists']
-            for i in range(1, len(artists)):
-                if i == len(artists)-1:
-                    allArtists += artists[i]['name']
-                else:
-                    allArtists += artists[i]['name']+', '
-            featureArtists.append(allArtists)
-        else:
-            featureArtists.append('NaN')
+        try:
+            if len(trackStats['artists']) > 1:
+                artists = trackStats['artists']
+                for i in range(1, len(artists)):
+                    if i == len(artists)-1:
+                        allArtists += artists[i]['name']
+                    else:
+                        allArtists += artists[i]['name']+', '
+                featureArtists.append(allArtists)
+            else:
+                featureArtists.append('NaN')
+        except (KeyError, IndexError):
+            featureArtists.append("")
     data = {
         'track_id':track_id,
         'track_name':track_name,
@@ -245,6 +248,7 @@ if len(trackId) > 0:
     sql_session_2.close()
 else:
     sql_session_2.close()
+
 
 
 
